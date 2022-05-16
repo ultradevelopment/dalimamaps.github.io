@@ -1,0 +1,17 @@
+<svg id="pandora_novo" xmlns="http://www.w3.org/2000/svg" width="194.107" height="113.415" viewBox="0 0 194.107 113.415">
+  <path id="Path_9" data-name="Path 9" d="M243.87,329.286a4.49,4.49,0,1,1-4.477-4.754A4.618,4.618,0,0,1,243.87,329.286Z" transform="translate(-205.503 -220.629)" fill="#2d314e" opacity="0.92"/>
+  <g id="Group_47" data-name="Group 47" transform="translate(136.228)">
+    <rect id="Rectangle_28" data-name="Rectangle 28" width="55.723" height="30.025"/>
+    <text id="_6X3" data-name="6X3" transform="translate(9.447 19.082)" fill="#fff" font-size="18" font-family="Ubuntu-Bold, Ubuntu" font-weight="700" letter-spacing="-0.01em"><tspan x="0" y="0">6X3</tspan></text>
+  </g>
+  <g id="Group_48" data-name="Group 48" transform="translate(7.119 30.095)">
+    <path id="Path_66" data-name="Path 66" d="M378.859,345.01l-141.3-2.146,3.735-37.589H389.822l2.621,26.15Z" transform="translate(-205.455 -302.654)" fill="#9fa1a4" opacity="0.5"/>
+    <path id="Path_67" data-name="Path 67" d="M399.558,344.3H228.878V304.566H413.286v26.15Z" transform="translate(-228.878 -304.566)" fill="#bdd8f1"/>
+    <path id="Path_68" data-name="Path 68" d="M275.049,311.64v13.584l13.727-13.584Z" transform="translate(-104.369 -285.49)" fill="#fff"/>
+  </g>
+  <text id="PANDORA" transform="translate(119.682 52.144)" font-size="16" font-family="Ubuntu-Bold, Ubuntu" font-weight="700" letter-spacing="0.009em"><tspan x="-40.424" y="0">PANDORA</tspan></text>
+  <circle id="Ellipse_25" data-name="Ellipse 25" cx="31.1" cy="31.1" r="31.1" transform="translate(2.74 17.165)" fill="#eee9de"/>
+  <path id="Path_94" data-name="Path 94" d="M226.952,334.166a33.839,33.839,0,1,1,60.26,21.149c-6.2,7.737-25.954,31.448-25.954,31.448s-20.679-23.711-26.882-31.444A33.709,33.709,0,0,1,226.952,334.166Z" transform="translate(-226.952 -285.902)" fill="#2d314e" opacity="0.92"/>
+  <circle id="Ellipse_26" data-name="Ellipse 26" cx="31.1" cy="31.1" r="31.1" transform="translate(2.74 17.165)" fill="#ff8879"/>
+  <text id="_01" data-name="01" transform="translate(21.174 51.379)" fill="#231f20" font-size="18" font-family="Ubuntu-Bold, Ubuntu" font-weight="700" letter-spacing="0.009em"><tspan x="0" y="0">01</tspan></text>
+</svg>
