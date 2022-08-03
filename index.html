@@ -56,6 +56,13 @@ overflow: hidden;
     width:200px;
 }
 
+@media screen and (max-width: 640px) {
+
+  .img-hide{
+    display: none;
+  }
+}
+
 .estatico{
     background: rgb(245, 166, 180, 0.5);
     color: rgb(237, 88, 115);
@@ -175,7 +182,7 @@ zoom="15" zoom-control-options="{style:'LARGE', position:'LEFT_CENTER'}" center=
   
   
     <custom-control position="RIGHT_BOTTOM" index="1">
-      <div>
+      <div class="img-hide">
         <img src="img/legenda.png"/>
         <!-- <img src="img/mpThis.svg" style="width:170px"/> -->
       </div>
