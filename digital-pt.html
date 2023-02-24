@@ -183,7 +183,7 @@ zoom="15" zoom-control-options="{style:'LARGE', position:'LEFT_CENTER'}" center=
   
     <custom-control position="RIGHT_BOTTOM" index="1">
       <div class="img-hide">
-        <img src="img/legenda_digital.png"/>
+        <img id="legenda" src="img/legenda_digital.png"/>
         <!-- <img src="img/mpThis.svg" style="width:170px"/> -->
       </div>
     </custom-control>
@@ -435,6 +435,16 @@ zoom="15" zoom-control-options="{style:'LARGE', position:'LEFT_CENTER'}" center=
  
 
 <script>
+
+const userLang = navigator.language;
+const locationImg = document.getElementById('legenda');
+
+if(userLang.includes('en')){
+  locationImg.src = 'img/legenda_en.png';
+} else{
+  locationImg.src = 'img/legenda.png';
+}
+
 angular.module('ngMap').run(function($rootScope, NgMap) {
   NgMap.getMap().then(function(map) {
     $rootScope.map = map;
