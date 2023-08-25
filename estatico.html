@@ -1,99 +1,99 @@
 <!DOCTYPE html>
 <html ng-app="ngMap">
+
 <head>
-<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-<meta charset="UTF-8">
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfdatz_SkDMTQQEXK7abzwjtEVaMMopCE&callback=initMap" type="text/javascript"></script>
-<script src="js/angular.js"></script>
-<script src="js/ng-map.js"></script>
-<style type="text/css">
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+  <meta charset="UTF-8">
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfdatz_SkDMTQQEXK7abzwjtEVaMMopCE&callback=initMap"
+    type="text/javascript"></script>
+  <script src="js/angular.js"></script>
+  <script src="js/ng-map.js"></script>
+  <style type="text/css">
+    @font-face {
+      font-family: 'ProximaNovaA-Bold';
+      src: url('fonts/ProximaNovaA-Bold.woff');
+    }
 
-@font-face {
-    font-family: 'ProximaNovaA-Bold';
-    src: url('fonts/ProximaNovaA-Bold.woff');
-}
-@font-face {
-    font-family: 'ProximaNovaA-Regular';
-    src: url('fonts/ProximaNovaA-Regular.woff');
-}
+    @font-face {
+      font-family: 'ProximaNovaA-Regular';
+      src: url('fonts/ProximaNovaA-Regular.woff');
+    }
 
-@font-face {
-    font-family: 'ProximaNova-Black';
-    src: url('fonts/ProximaNovaA-Black.woff');
-}
+    @font-face {
+      font-family: 'ProximaNova-Black';
+      src: url('fonts/ProximaNovaA-Black.woff');
+    }
 
-.fullwidth{
-width: 100% !important;
-margin: 0 !important;
-overflow: hidden;
-}
+    .fullwidth {
+      width: 100% !important;
+      margin: 0 !important;
+      overflow: hidden;
+    }
 
-.gm-style{
-    font: 400 11px 'ProximaNovaA-Bold', sans-serif;
-}
+    .gm-style {
+      font: 400 11px 'ProximaNovaA-Bold', sans-serif;
+    }
 
-*{
-    font-family: 'ProximaNovaA-Regular', sans-serif !important;
-}
+    * {
+      font-family: 'ProximaNovaA-Regular', sans-serif !important;
+    }
 
-.tamanhos{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  margin-bottom: 1rem;
-}
+    .tamanhos {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      margin-bottom: 1rem;
+    }
 
-.pixel{
-  display: flex;
-    flex-direction: column;
-    align-items: baseline; 
-    font-size: 11px;
-}
-.gm-style-iw {
-    color: #000;
-    text-align: center;
-    top: 25px !important;
-    width:200px;
-}
+    .pixel {
+      display: flex;
+      flex-direction: column;
+      align-items: baseline;
+      font-size: 11px;
+    }
 
-@media screen and (max-width: 640px) {
+    .gm-style-iw {
+      color: #000;
+      text-align: center;
+      top: 25px !important;
+      width: 200px;
+    }
 
-  .img-hide{
-    display: none !important;
-  }
-}
+    @media screen and (max-width: 640px) {
 
-.estatico{
-    background: rgb(245, 166, 180, 0.5);
-    color: rgb(237, 88, 115);
-    font-weight: bold;
-    border: 1.5px solid rgb(245, 114, 138);
-    padding: 2px 10px;
-    border-radius: 5px;
-}
+      .img-hide {
+        display: none !important;
+      }
+    }
 
-.digital{
-    background: rgba(189, 216, 241, 0.5);
-    color: #3486d3;
-    font-weight: bold;
-    border: 1.5px solid #3486d3;
-    padding: 2px 10px;
-    border-radius: 5px;
-}
+    .estatico {
+      background: rgb(245, 166, 180, 0.5);
+      color: rgb(237, 88, 115);
+      font-weight: bold;
+      border: 1.5px solid rgb(245, 114, 138);
+      padding: 2px 10px;
+      border-radius: 5px;
+    }
 
-div p {
-    margin-bottom: 8px;
-}
+    .digital {
+      background: rgba(189, 216, 241, 0.5);
+      color: #3486d3;
+      font-weight: bold;
+      border: 1.5px solid #3486d3;
+      padding: 2px 10px;
+      border-radius: 5px;
+    }
 
-</style>
+    div p {
+      margin-bottom: 8px;
+    }
+  </style>
 
 </head>
 
 <body class="fullwidth">
 
-  <ng-map min-zoom="12" max-zoom="18"
-  
-   styles="[
+  <ng-map min-zoom="12" max-zoom="18" styles="[
 
 {featureType:'administrative',
 elementType:'all',
@@ -156,71 +156,66 @@ stylers:[
 {lightness:-25},
 {saturation:-100}]}]
 
-"
-zoom="15" zoom-control-options="{style:'LARGE', position:'LEFT_CENTER'}" center="[-25.965728, 32.583270]"      
-      map-type-control="true" 
-      map-type-control-options='{position:"top_left", style:"dropdown_menu", mapTypeIds:["HYBRID","ROADMAP","SATELLITE","TERRAIN"]}'
-      overview-map-control="true" 
-      overview-map-control-options="{opened:true}"
-      pan-control="true" 
-      pan-control-options='{position:"left_center"}'
-      rotate-control="true" 
-      rotate-control-options='{position:"right_center"}'
-      scale-control="true" 
-      scale-control-options='{position:"bottom_right", style:"default"}'
-      street-view-control="true"
-      street-view-control-options='{position:"top_right"}' 
-      scrollwheel="false" style="height: 780px; display:block;">
+" zoom="15" zoom-control-options="{style:'LARGE', position:'LEFT_CENTER'}" center="[-25.965728, 32.583270]"
+    map-type-control="true"
+    map-type-control-options='{position:"top_left", style:"dropdown_menu", mapTypeIds:["HYBRID","ROADMAP","SATELLITE","TERRAIN"]}'
+    overview-map-control="true" overview-map-control-options="{opened:true}" pan-control="true"
+    pan-control-options='{position:"left_center"}' rotate-control="true"
+    rotate-control-options='{position:"right_center"}' scale-control="true"
+    scale-control-options='{position:"bottom_right", style:"default"}' street-view-control="true"
+    street-view-control-options='{position:"top_right"}' scrollwheel="false" style="height: 780px; display:block;">
 
     <!--<custom-control position="RIGHT_CENTER" index="1">-->
     <!--  <div>-->
     <!--  <img src="img/redes.svg" style="width:160px;padding-right:10px;">-->
     <!--  </div>-->
     <!--</custom-control>-->
-    
-  <!-- Dalima Sede -->
-  
-  
+
+    <!-- Dalima Sede -->
+
+
     <custom-control position="RIGHT_BOTTOM" index="1">
       <div class="img-hide">
-        <img id="legenda" src="img/legenda_estaticos.png"/>
+        <img id="legenda" src="img/legenda_estaticos.png" />
         <!-- <img src="img/mpThis.svg" style="width:170px"/> -->
       </div>
     </custom-control>
-    
-  
 
-     <custom-marker title="DALIMA" position="[-25.968468, 32.564084]" on-click="map.showInfoWindow(event, 'Dalima')">	 
-        <div>
-            <img src="img/dalima_office_novo_Old.svg" style="width:200px"/>
-        </div>
-    </custom-marker>	
-    
-	 <marker position="[-25.968468, 32.564084]" icon="img/dalima_office_tranparent.png" on-click="map.showInfoWindow(event, 'Dalima')" animation="Animation.DROP"></marker>
-	
-	<info-window id="Dalima" max-width="200">
-        <div ng-non-bindable>
-            <img src="img/DALIMA-_-Web-Entrada.jpg" style="width:200px"/>
-            <p><strong>DALIMA | Publicidade Digital Outdoor</strong></p>
-			<p>Av. 25 de Setembro, 2400 RC drt Maputo, Mo&ccedil;ambique</p>
-          </div>
+
+
+    <custom-marker title="DALIMA" position="[-25.968468, 32.564084]" on-click="map.showInfoWindow(event, 'Dalima')">
+      <div>
+        <img src="img/dalima_office_novo_Old.svg" style="width:200px" />
+      </div>
+    </custom-marker>
+
+    <marker position="[-25.968468, 32.564084]" icon="img/dalima_office_tranparent.png"
+      on-click="map.showInfoWindow(event, 'Dalima')" animation="Animation.DROP"></marker>
+
+    <info-window id="Dalima" max-width="200">
+      <div ng-non-bindable>
+        <img src="img/DALIMA-_-Web-Entrada.jpg" style="width:200px" />
+        <p><strong>DALIMA | Publicidade Digital Outdoor</strong></p>
+        <p>Av. 25 de Setembro, 2400 RC drt Maputo, Mo&ccedil;ambique</p>
+      </div>
     </info-window>
-      
-      <!-- Mundos -->
-      <marker position="[-25.974494, 32.594064]" title="Mundos" icon="img/Estatico/mundos.svg" on-click="map.showInfoWindow(event, 'mundos')" animation="Animation.DROP"></marker>
-      <info-window id="mundos" max-width="200">
-            <div ng-non-bindable>
-                <img loading="lazy" src="img/Mundos-B.png"  style="width:100%;"/>
-                <p><strong>Mundos B</strong></p>
-          <p style="position: relative;top: -8px;">Av. Julius Nyerere, ao lado do Restaurante Mundos</p>
-    
-          <img loading="lazy" src="img/Mundos-A.png"  style="width:100%;"/>
-                <p><strong>Mundos A</strong></p>
-          <p style="position: relative;top: -8px;">Av. Julius Nyerere, ao lado do Restaurante Mundos</p>
-            </div>
-        </info-window>
-      
-      <!-- Mercado Janete   -->
+
+    <!-- Mundos -->
+    <marker position="[-25.974494, 32.594064]" title="Mundos" icon="img/Estatico/mundos.svg"
+      on-click="map.showInfoWindow(event, 'mundos')" animation="Animation.DROP"></marker>
+    <info-window id="mundos" max-width="200">
+      <div ng-non-bindable>
+        <img loading="lazy" src="img/Mundos-B.png" style="width:100%;" />
+        <p><strong>Mundos B</strong></p>
+        <p style="position: relative;top: -8px;">Av. Julius Nyerere, ao lado do Restaurante Mundos</p>
+
+        <img loading="lazy" src="img/Mundos-A.png" style="width:100%;" />
+        <p><strong>Mundos A</strong></p>
+        <p style="position: relative;top: -8px;">Av. Julius Nyerere, ao lado do Restaurante Mundos</p>
+      </div>
+    </info-window>
+
+    <!-- Mercado Janete  
     <marker position="[-25.960989, 32.583075]" title="Janete" icon="img/Estatico/janete_novo.svg" on-click="map.showInfoWindow(event, 'janete')" animation="Animation.DROP"></marker>
 	<info-window id="janete" max-width="200">
         <div ng-non-bindable>
@@ -229,154 +224,168 @@ zoom="15" zoom-control-options="{style:'LARGE', position:'LEFT_CENTER'}" center=
 			<p style="position: relative;top: -8px;">Av. Vladmir Lenine perto do Mercado Janet</p>
           </div>
         </div>
-      </info-window>
-      
+      </info-window> -->
+
     <!-- Xiquelene -->
-    <marker position="[-25.928624, 32.599013]" title="Xiquelene" icon="img/Estatico/xiquelene.svg" on-click="map.showInfoWindow(event, 'xiquelene')" animation="Animation.DROP"></marker>
-	<info-window id="xiquelene" max-width="200">
-        <div ng-non-bindable>
-            <img loading="lazy" src="img/xiquelene-B-ESTATICO.png"  style="width:100%;"/>
-            <p><strong>Xiquelene B</strong></p>
-			<p style="position: relative;top: -8px;">Cruzamento da Av. FPLM com Rua da Soveste em direcç. à Praça dos Heróis</p>
-			
-			<img loading="lazy" src="img/xiqurelene-A.png"  style="width:100%;"/>
-            <p><strong>Xiquelene A</strong></p>
-			<p style="position: relative;top: -8px;">Cruzamento da Av. FPLM com Rua da Soveste em direcç. ao M. Xiquelene</p>
-          </div>
+    <marker position="[-25.928624, 32.599013]" title="Xiquelene" icon="img/Estatico/xiquelene.svg"
+      on-click="map.showInfoWindow(event, 'xiquelene')" animation="Animation.DROP"></marker>
+    <info-window id="xiquelene" max-width="200">
+      <div ng-non-bindable>
+        <img loading="lazy" src="img/xiquelene-B-ESTATICO.png" style="width:100%;" />
+        <p><strong>Xiquelene B</strong></p>
+        <p style="position: relative;top: -8px;">Cruzamento da Av. FPLM com Rua da Soveste em direcç. à Praça dos
+          Heróis</p>
+
+        <img loading="lazy" src="img/xiqurelene-A.png" style="width:100%;" />
+        <p><strong>Xiquelene A</strong></p>
+        <p style="position: relative;top: -8px;">Cruzamento da Av. FPLM com Rua da Soveste em direcç. ao M. Xiquelene
+        </p>
+      </div>
     </info-window>
 
-      <!-- Jat Times Square  -->
-    <marker position="[-25.977861, 32.581939]" title="Times Square" icon="img/Estatico/times_square_1_3.svg" on-click="map.showInfoWindow(event, 'times-square')" animation="Animation.DROP"></marker>
-	<info-window id="times-square" max-width="200">
-        <div ng-non-bindable>
-            <img loading="lazy" src="img/JAT-Times-Square.png"  style="width:100%;"/>
-            <p><strong>Times Square</strong></p>
-			      <p style="position: relative;top: -8px;">Av. Avenida Zedequias Manganhela, rua do pântano.</p>
-          </div>
-        </div>
-      </info-window>
-      
-
-      <!-- Cardoso -->
-    <marker position="[-25.975278771455674, 32.57451610382061]" title="Cardoso" icon="img/Estatico/cardoso-01.svg" on-click="map.showInfoWindow(event, 'cardoso')" animation="Animation.DROP"></marker>
-	<info-window id="cardoso" max-width="200">
-        <div ng-non-bindable>
-            <img loading="lazy" src="img/Cardoso.png"  style="width:100%;"/>
-            <p><strong>Cardoso</strong></p>
-			<p style="position: relative;top: -8px;">Av. 25 de Setembro no prédio Cardoso, perto do Palácio da Justiça.</p>
-        </div>
-      </info-window>
-      
-      
-        <!-- Naval  -->
-    <marker position="[-25.973324, 32.597220]" title="NAVAL" icon="img/Estatico/naval.svg" on-click="map.showInfoWindow(event, 'naval')" animation="Animation.DROP"></marker>
-	<info-window id="naval" max-width="200">
-        <div ng-non-bindable>
-            <img loading="lazy" src="img/NAVAL-B.png"  style="width:100%;"/>
-            <p><strong>NAVAL</strong></p>
-			<p style="position: relative;top: -8px;">Av. da Marginal, perto e em direc&ccedil;&atilde;o &agrave; ao Clube Naval</p>
-        </div>
-      </info-window>
-      
-      
-              <!-- Zambi  -->
-    <marker position="[-25.980250, 32.579375]" title="ZAMBI" icon="img/Estatico/zambi.svg" on-click="map.showInfoWindow(event, 'zambi')" animation="Animation.DROP"></marker>
-	<info-window id="zambi" max-width="200">
-        <div ng-non-bindable>
-            <img loading="lazy" src="img/Zambi-B-Static.png"  style="width:100%;"/>
-            <p><strong>ZAMBI</strong></p>
-			<p style="position: relative;top: -8px;">AV. 10 de Novembro, no restaurante Zambi</p>
-        </div>
-      </info-window>
-      
-  <!-- 24 DE JULHO -->
-    <marker position="[-25.962813, 32.568636]" title="24 DE JULHO" icon="img/Estatico/24_julho.svg" on-click="map.showInfoWindow(event, '24')" animation="Animation.DROP"></marker>
-	<info-window id="24" max-width="200">
-        <div ng-non-bindable>
-            <img loading="lazy" src="img/24-DE-JULHO-B-1.png"  style="width:100%;"/>
-            <p><strong>24 DE JULHO</strong></p> 
-			<p style="position: relative;top: -8px;">Cruzamento da Av. Albert Luthuli e Av. 24 de Julho</p>
-        </div>
-      </info-window>
-	  	
-	
-  <!-- FPLM -->
-    <marker position="[-25.9313210, 32.5882729]" title="FPLM" icon="img/Estatico/fplm_novo.svg" on-click="map.showInfoWindow(event, 'FPLM')" animation="Animation.DROP"></marker>
-	<info-window id="FPLM" max-width="200">
-        <div ng-non-bindable>
-            <img loading="lazy" src="img/FPLM-B-ESTATICO-1.png"  style="width:100%;"/>              
-            <p><strong>FPLM</strong></p>
-			<p style="position: relative;top: -8px;"> Av. Das FPLM, perto do Hospital de Mavalane em direcç. à Praça dos Heróis</p>
-        </div>
-      </info-window>
-	
-  <!-- KAUNDA -->
-    <marker position="[-25.954278, 32.591424]" title="KAUNDA"  icon="img/Estatico/kaunda.svg" on-click="map.showInfoWindow(event, 'KAUNDA')" animation="Animation.DROP"></marker>
-	<info-window id="KAUNDA" max-width="200">
-        <div ng-non-bindable>
-            <img loading="lazy" src="img/Kaunda-B-ESTATICO.png"  style="width:100%;"/>             
-            <p><strong>KAUNDA</strong></p>
-			<p style="position: relative;top: -8px;">Av. Kenneth Kaunda perto da Rua da Fran&ccedil;a</p>
-        </div>
-      </info-window>
- 	
-  <!-- XENON -->
-    <marker position="[-25.973892, 32.594261]" title="XENON"  icon="img/Estatico/xenon_1.svg" on-click="map.showInfoWindow(event, 'XENON')" animation="Animation.DROP"></marker>
-	<info-window id="XENON" max-width="200">
-        <div ng-non-bindable>
-			<img loading="lazy" src="img/XENON-B.png"  style="width:100%;"/>  
-            <p><strong>XENON</strong></p>
-			<p style="position: relative;top: -8px;">Cruzamento da Av. Eduardo Mondlane e Av. Julius Nyerere</p>
-        </div>
-      </info-window>
-	  	
+    <!-- Jat Times Square  -->
+    <marker position="[-25.977861, 32.581939]" title="Times Square" icon="img/Estatico/times_square_1_3.svg"
+      on-click="map.showInfoWindow(event, 'times-square')" animation="Animation.DROP"></marker>
+    <info-window id="times-square" max-width="200">
+      <div ng-non-bindable>
+        <img loading="lazy" src="img/JAT-Times-Square.png" style="width:100%;" />
+        <p><strong>Times Square</strong></p>
+        <p style="position: relative;top: -8px;">Av. Avenida Zedequias Manganhela, rua do pântano.</p>
+      </div>
+      </div>
+    </info-window>
 
 
+    <!-- Cardoso -->
+    <marker position="[-25.975278771455674, 32.57451610382061]" title="Cardoso" icon="img/Estatico/cardoso-01.svg"
+      on-click="map.showInfoWindow(event, 'cardoso')" animation="Animation.DROP"></marker>
+    <info-window id="cardoso" max-width="200">
+      <div ng-non-bindable>
+        <img loading="lazy" src="img/Cardoso.png" style="width:100%;" />
+        <p><strong>Cardoso</strong></p>
+        <p style="position: relative;top: -8px;">Av. 25 de Setembro no prédio Cardoso, perto do Palácio da Justiça.</p>
+      </div>
+    </info-window>
+
+
+    <!-- Naval  -->
+    <marker position="[-25.973324, 32.597220]" title="NAVAL" icon="img/Estatico/naval.svg"
+      on-click="map.showInfoWindow(event, 'naval')" animation="Animation.DROP"></marker>
+    <info-window id="naval" max-width="200">
+      <div ng-non-bindable>
+        <img loading="lazy" src="img/NAVAL-B.png" style="width:100%;" />
+        <p><strong>NAVAL</strong></p>
+        <p style="position: relative;top: -8px;">Av. da Marginal, perto e em direc&ccedil;&atilde;o &agrave; ao Clube
+          Naval</p>
+      </div>
+    </info-window>
+
+
+    <!-- Zambi  -->
+    <marker position="[-25.980250, 32.579375]" title="ZAMBI" icon="img/Estatico/zambi.svg"
+      on-click="map.showInfoWindow(event, 'zambi')" animation="Animation.DROP"></marker>
+    <info-window id="zambi" max-width="200">
+      <div ng-non-bindable>
+        <img loading="lazy" src="img/Zambi-B-Static.png" style="width:100%;" />
+        <p><strong>ZAMBI</strong></p>
+        <p style="position: relative;top: -8px;">AV. 10 de Novembro, no restaurante Zambi</p>
+      </div>
+    </info-window>
+
+    <!-- 24 DE JULHO -->
+    <marker position="[-25.962813, 32.568636]" title="24 DE JULHO" icon="img/Estatico/24_julho.svg"
+      on-click="map.showInfoWindow(event, '24')" animation="Animation.DROP"></marker>
+    <info-window id="24" max-width="200">
+      <div ng-non-bindable>
+        <img loading="lazy" src="img/24-DE-JULHO-B-1.png" style="width:100%;" />
+        <p><strong>24 DE JULHO</strong></p>
+        <p style="position: relative;top: -8px;">Cruzamento da Av. Albert Luthuli e Av. 24 de Julho</p>
+      </div>
+    </info-window>
+
+
+    <!-- FPLM -->
+    <marker position="[-25.9313210, 32.5882729]" title="FPLM" icon="img/Estatico/fplm_novo.svg"
+      on-click="map.showInfoWindow(event, 'FPLM')" animation="Animation.DROP"></marker>
+    <info-window id="FPLM" max-width="200">
+      <div ng-non-bindable>
+        <img loading="lazy" src="img/FPLM-B-ESTATICO-1.png" style="width:100%;" />
+        <p><strong>FPLM</strong></p>
+        <p style="position: relative;top: -8px;"> Av. Das FPLM, perto do Hospital de Mavalane em direcç. à Praça dos
+          Heróis</p>
+      </div>
+    </info-window>
+
+    <!-- KAUNDA -->
+    <marker position="[-25.954278, 32.591424]" title="KAUNDA" icon="img/Estatico/kaunda.svg"
+      on-click="map.showInfoWindow(event, 'KAUNDA')" animation="Animation.DROP"></marker>
+    <info-window id="KAUNDA" max-width="200">
+      <div ng-non-bindable>
+        <img loading="lazy" src="img/Kaunda-B-ESTATICO.png" style="width:100%;" />
+        <p><strong>KAUNDA</strong></p>
+        <p style="position: relative;top: -8px;">Av. Kenneth Kaunda perto da Rua da Fran&ccedil;a</p>
+      </div>
+    </info-window>
+
+    <!-- XENON -->
+    <marker position="[-25.973892, 32.594261]" title="XENON" icon="img/Estatico/xenon_1.svg"
+      on-click="map.showInfoWindow(event, 'XENON')" animation="Animation.DROP"></marker>
+    <info-window id="XENON" max-width="200">
+      <div ng-non-bindable>
+        <img loading="lazy" src="img/XENON-B.png" style="width:100%;" />
+        <p><strong>XENON</strong></p>
+        <p style="position: relative;top: -8px;">Cruzamento da Av. Eduardo Mondlane e Av. Julius Nyerere</p>
+      </div>
+    </info-window>
 
 
 
-      <transit-layer></transit-layer>
+
+
+
+    <transit-layer></transit-layer>
   </ng-map>
- 
 
-<script>
 
-const userLang = navigator.language;
-const locationImg = document.getElementById('legenda');
+  <script>
 
-if(userLang.includes('en')){
-  locationImg.src = 'img/legenda_estaticos_en.png';
-} else{
-  locationImg.src = 'img/legenda_estaticos.png';
-}
+    const userLang = navigator.language;
+    const locationImg = document.getElementById('legenda');
 
-angular.module('ngMap').run(function($rootScope, NgMap) {
-  NgMap.getMap().then(function(map) {
-    $rootScope.map = map;
-  });
-});
+    if (userLang.includes('en')) {
+      locationImg.src = 'img/legenda_estaticos_en.png';
+    } else {
+      locationImg.src = 'img/legenda_estaticos.png';
+    }
 
-var styleArray = [
-  {
-    featureType: "all",
-    stylers: [
-      { saturation: -80 }
-    ]
-  },{
-    featureType: "road.arterial",
-    elementType: "geometry",
-    stylers: [
-      { hue: "#00ffee" },
-      { saturation: 50 }
-    ]
-  },{
-    featureType: "poi.business",
-    elementType: "labels",
-    stylers: [
-      { visibility: "off" }
-    ]
-  }
-];
-</script>
+    angular.module('ngMap').run(function ($rootScope, NgMap) {
+      NgMap.getMap().then(function (map) {
+        $rootScope.map = map;
+      });
+    });
+
+    var styleArray = [
+      {
+        featureType: "all",
+        stylers: [
+          { saturation: -80 }
+        ]
+      }, {
+        featureType: "road.arterial",
+        elementType: "geometry",
+        stylers: [
+          { hue: "#00ffee" },
+          { saturation: 50 }
+        ]
+      }, {
+        featureType: "poi.business",
+        elementType: "labels",
+        stylers: [
+          { visibility: "off" }
+        ]
+      }
+    ];
+  </script>
 </body>
+
 </html>
