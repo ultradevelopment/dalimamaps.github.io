@@ -421,15 +421,16 @@ stylers:[
     </info-window> -->
 
     <!-- PONTO-FINAL -->
-    <marker position="[-25.961713, 32.572194]" title="PONTO-FINAL" icon="img/Digital/ponto_final.svg"
-      on-click="map.showInfoWindow(event, 'PONTO-FINAL')" animation="Animation.DROP"></marker>
-    <info-window id="PONTO-FINAL" max-width="200">
-      <div ng-non-bindable>
-        <img loading="lazy" src="img/Digital/2023/DALIMA-Ponto Final 2023.jpg" style="width:100%;" />
-        <p><strong>PONTO-FINAL</strong></p>
-        <p style="position: relative;top: -8px;">Cruzamento da Av. Eduardo Mondlane e Av. Guerra Popular</p>
-      </div>
-    </info-window>
+   <marker position="[-25.961713, 32.572194]" title="PONTO-FINAL" icon="img/Digital/ponto_final.svg"
+        on-click="map.showInfoWindow(event, 'PONTO-FINAL')" animation="Animation.DROP"></marker>
+	<info-window id="PONTO-FINAL" max-width="200">
+	  <div ng-non-bindable>
+	    <img loading="lazy" src="img/Digital/2023/DALIMA-Ponto Final 2023.jpg" style="width:100%;" />
+	    <p><strong>PONTO-FINAL</strong></p>
+	    <p style="position: relative;top: -8px;">Cruzamento da Av. Eduardo Mondlane e Av. Guerra Popular</p>
+	    <button ng-click="loadStreetView([-25.961713, 32.572194])">View Street</button>
+	  </div>
+	</info-window>
 
     <!-- RONIL -->
     <marker position="[-25.963833, 32.575214]" title="RONIL" icon="img/Digital/ronil.svg"
@@ -490,6 +491,17 @@ stylers:[
         $rootScope.map = map;
       });
     });
+
+    $scope.loadStreetView = function(coordinates) {
+	  // Get the latitude and longitude of the marker
+	  var latLng = {lat: coordinates[0], lng: coordinates[1]};
+	  
+	  // Construct the Street View URL
+	  var streetViewUrl = 'https://www.google.com/maps?q=&layer=c&cbll=' + latLng.lat + ',' + latLng.lng;
+	  
+	  // Open the street view URL in a new tab
+	  window.open(streetViewUrl, '_blank');
+	};
 
     var styleArray = [
       {
