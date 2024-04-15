@@ -489,10 +489,8 @@ stylers:[
     angular.module('ngMap').run(function ($rootScope, NgMap) {
       NgMap.getMap().then(function (map) {
         $rootScope.map = map;
-      });
-    });
 
-    $scope.loadStreetView = function(coordinates) {
+	$rootScope.loadStreetView = function(coordinates) {
 	  // Get the latitude and longitude of the marker
 	  var latLng = {lat: coordinates[0], lng: coordinates[1]};
 	  
@@ -502,6 +500,8 @@ stylers:[
 	  // Open the street view URL in a new tab
 	  window.open(streetViewUrl, '_blank');
 	};
+      });
+    });
 
     var styleArray = [
       {
