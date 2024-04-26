@@ -594,18 +594,18 @@ stylers:[
 
   <script>
 
-    const userLang = navigator.language;
-    const locationImg = document.getElementById('legenda');
-
-    if (userLang.includes('en')) {
-      locationImg.src = 'img/legenda_en.png';
-    } else {
-      locationImg.src = 'img/legenda.png';
-    }
-
     angular.module('ngMap').run(function ($rootScope, NgMap) {
       NgMap.getMap().then(function (map) {
         $rootScope.map = map;
+
+        const userLang = navigator.language;
+        const locationImg = document.getElementById('legenda');
+
+        if (userLang.includes('en')) {
+          locationImg.src = 'img/legenda_en.png';
+        } else {
+          locationImg.src = 'img/legenda.png';
+        }
 
         const iframe = document.querySelector('iframe');
         iframe.replaceWith("<div></div>")
