@@ -4,13 +4,8 @@
 <head>
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
   <meta charset="UTF-8">
-  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfdatz_SkDMTQQEXK7abzwjtEVaMMopCE&callback=initMap"
-    type="text/javascript"></script> -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfdatz_SkDMTQQEXK7abzwjtEVaMMopCE"
-    async defer></script>
-  <!-- <script async
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfdatz_SkDMTQQEXK7abzwjtEVaMMopCE&callback=initMap">
-    </script> -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfdatz_SkDMTQQEXK7abzwjtEVaMMopCE" async
+    defer></script>
   <script src="js/angular.js"></script>
   <script src="js/ng-map.js"></script>
   <style type="text/css">
@@ -611,6 +606,9 @@ stylers:[
     angular.module('ngMap').run(function ($rootScope, NgMap) {
       NgMap.getMap().then(function (map) {
         $rootScope.map = map;
+
+        const iframe = document.querySelector('iframe');
+        iframe.replaceWith("<div></div>")
       });
     });
 
