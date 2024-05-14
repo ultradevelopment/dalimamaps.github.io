@@ -600,30 +600,33 @@ stylers:[
 
   <script>
 
-    const userLang = navigator.language;
-    const locationImg = document.getElementById('legenda');
-
-    if (userLang.includes('en')) {
-      locationImg.src = 'img/legenda_en_digital.png';
-    } else {
-      locationImg.src = 'img/legenda_digital.png';
-    }
-
     angular.module('ngMap').run(function ($rootScope, NgMap) {
       NgMap.getMap().then(function (map) {
         $rootScope.map = map;
 
-        $rootScope.loadStreetView = function (coordinates, heading, pitch, zoom) {
-          // Get the latitude and longitude of the marker
-          var latLng = { lat: coordinates[0], lng: coordinates[1] };
+        const userLang = navigator.language;
+        const locationImg = document.getElementById('legenda');
 
-          // Construct the Street View URL
-          var streetViewUrl = 'https://www.google.com/maps?q=&layer=c&cbll=' + latLng.lat + ',' + latLng.lng;
-          streetViewUrl += '&cbp=1,' + heading + ',,' + pitch + ',' + zoom;
+        if (userLang.includes('en')) {
+          locationImg.src = 'img/legenda_en.png';
+        } else {
+          locationImg.src = 'img/legenda.png';
+        }
 
-          // Open the street view URL in a new tab
-          window.open(streetViewUrl, '_blank');
-        };
+        const iframe = document.querySelector('iframe');
+        iframe.replaceWith("<div></div>")
+
+        // $rootScope.loadStreetView = function (coordinates, heading, pitch, zoom) {
+        //   // Get the latitude and longitude of the marker
+        //   var latLng = { lat: coordinates[0], lng: coordinates[1] };
+
+        //   // Construct the Street View URL
+        //   var streetViewUrl = 'https://www.google.com/maps?q=&layer=c&cbll=' + latLng.lat + ',' + latLng.lng;
+        //   streetViewUrl += '&cbp=1,' + heading + ',,' + pitch + ',' + zoom;
+
+        //   // Open the street view URL in a new tab
+        //   window.open(streetViewUrl, '_blank');
+        // };
       });
     });
 
