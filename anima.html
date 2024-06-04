@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html ng-app="ngMap">
+
+<head>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+  <meta charset="UTF-8">
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfdatz_SkDMTQQEXK7abzwjtEVaMMopCE"
+    type="text/javascript"></script>
+  <script src="js/angular.js"></script>
+  <script src="js/ng-map.js"></script>
+  <style type="text/css">
+    @font-face {
+      font-family: 'ProximaNovaA-Bold';
+      src: url('fonts/ProximaNovaA-Bold.woff');
+    }
+
+    @font-face {
+      font-family: 'ProximaNovaA-Regular';
+      src: url('fonts/ProximaNovaA-Regular.woff');
+    }
+
+    @font-face {
+      font-family: 'ProximaNova-Black';
+      src: url('fonts/ProximaNovaA-Black.woff');
+    }
+
+    .fullwidth {
+      width: 100% !important;
+      margin: 0 !important;
+      overflow: hidden;
+    }
+
+    .gm-style {
+      font: 400 11px 'ProximaNovaA-Bold', sans-serif;
+    }
+
+    * {
+      font-family: 'ProximaNovaA-Regular', sans-serif !important;
+    }
+
+    .tamanhos {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      margin-bottom: 1rem;
+    }
+
+    .pixel {
+      display: flex;
+      flex-direction: column;
+      align-items: baseline;
+      font-size: 11px;
+    }
+
+    .gm-style-iw {
+      color: #000;
+      text-align: center;
+      top: 25px !important;
+      width: 200px;
+    }
+
+    @media screen and (max-width: 640px) {
+
+      .img-hide {
+        display: none !important;
+      }
+    }
+
+    .estatico {
+      background: rgb(245, 166, 180, 0.5);
+      color: rgb(237, 88, 115);
+      font-weight: bold;
+      border: 1.5px solid rgb(245, 114, 138);
+      padding: 2px 10px;
+      border-radius: 5px;
+    }
+
+    .digital {
+      background: rgba(189, 216, 241, 0.5);
+      color: #3486d3;
+      font-weight: bold;
+      border: 1.5px solid #3486d3;
+      padding: 2px 10px;
+      border-radius: 5px;
+    }
+
+    div p {
+      margin-bottom: 8px;
+    }
+  </style>
+
+</head>
+
+<body class="fullwidth">
+
+  <ng-map min-zoom="12" max-zoom="18" styles="[
+
+{featureType:'administrative',
+elementType:'all',
+stylers:[
+{saturation:-100}]}, 
+
+{featureType:'administrative.province',
+elementType:'all',
+stylers:[{visibility:'off'}]},
+
+{featureType:'landscape',
+elementType:'all',
+stylers:[
+{saturation:-100},
+{lightness:65},
+{visibility:'on'}]},
+					
+{featureType:'poi',
+elementType:'all',
+stylers:[
+{saturation:-100},
+{lightness:50},
+{visibility:'simplified'}]},
+
+{featureType:'road',
+elementType:'all',
+stylers:[
+{saturation:-100}]},
+
+{featureType:'road.highway',
+elementType:'all',
+stylers:[
+{visibility:'simplified'}]},	
+
+{featureType:'road.arterial',
+elementType:'all',
+stylers:[
+{lightness:'30'}]},	
+
+{featureType:'road.local',
+elementType:'all',
+stylers:[
+{lightness:'40'}]},
+
+{featureType:'transit',
+elementType:'all',
+stylers:[{saturation:-100},
+{visibilit:'simplified'}]},	
+
+{featureType:'water',
+elementType:'geometry',
+stylers:[
+{hue:'#E6E6E6'},
+{lightness:10},
+{saturation:-100}]},
+
+{featureType:'water',
+elementType:'labels',
+stylers:[
+{lightness:-25},
+{saturation:-100}]}]
+
+" zoom="15" zoom-control-options="{style:'LARGE', position:'LEFT_CENTER'}" center="[-25.965728, 32.583270]"
+    map-type-control="true"
+    map-type-control-options='{position:"top_left", style:"dropdown_menu", mapTypeIds:["HYBRID","ROADMAP","SATELLITE","TERRAIN"]}'
+    overview-map-control="true" overview-map-control-options="{opened:true}" pan-control="true"
+    pan-control-options='{position:"left_center"}' rotate-control="true"
+    rotate-control-options='{position:"right_center"}' scale-control="true"
+    scale-control-options='{position:"bottom_right", style:"default"}' street-view-control="true"
+    street-view-control-options='{position:"top_right"}' scrollwheel="false" style="height: 780px; display:block;">
+
+    <!--<custom-control position="RIGHT_CENTER" index="1">-->
+    <!--  <div>-->
+    <!--  <img src="img/redes.svg" style="width:160px;padding-right:10px;">-->
+    <!--  </div>-->
+    <!--</custom-control>-->
+
+    <!-- Dalima Sede -->
+
+
+    <custom-control position="RIGHT_BOTTOM" index="1">
+      <div class="img-hide">
+        <img id="legenda" src="img/Legenda_Digital_Novo.png" />
+      </div>
+    </custom-control>
+
+
+
+    <custom-marker title="DALIMA" position="[-25.968468, 32.564084]" on-click="map.showInfoWindow(event, 'Dalima')">
+      <div>
+        <img src="img/DigitaisNovos/Office.svg" style="width:200px" />
+      </div>
+    </custom-marker>
+
+    <marker position="[-25.968468, 32.564084]" icon="img/dalima_office_tranparent.png"
+      on-click="map.showInfoWindow(event, 'Dalima')" animation="Animation.DROP"></marker>
+
+    <info-window id="Dalima" max-width="200">
+      <div ng-non-bindable>
+        <img src="img/DALIMA-_-Web-Entrada.jpg" style="width:200px" />
+        <p><strong>DALIMA | Publicidade Digital Outdoor</strong></p>
+        <p>Av. 25 de Setembro, 2400 RC drt Maputo, Mo&ccedil;ambique</p>
+      </div>
+    </info-window>
+
+    <!-- Jat Times Square  -->
+    <marker position="[-25.977861, 32.581939]" title="Times Square" icon="img/DigitaisNovos/Times_Square.svg"
+      on-click="map.showInfoWindow(event, 'times-square')" animation="Animation.DROP"></marker>
+    <info-window id="times-square" max-width="200">
+      <div ng-non-bindable>
+        <img loading="lazy" src="img/Digital/2023/DALIMA_TimesSquare_2023.jpg" style="width:100%;" />
+        <p><strong>Times Square A</strong></p>
+        <p style="position: relative;top: -8px;">Av. Avenida Zedequias Manganhela, rua do pântano.</p>
+        <!-- <a target="_blank"
+          style="text-decoration: none; border-radius: 3px; border: 0px; padding: 6px 10px; font-weight: bold; outline: none; background: #EF3D64; color: white;"
+          href="https://www.google.com/maps/@-25.9620114,32.572309,3a,66.9y,340.87h,94.17t/data=!3m7!1e1!3m5!1sAF1QipNZARjprcflRX9XCSl23_lzU5XCnM_Gch3wyYUe!2e10!3e12!7i3840!8i1920?entry=ttu">
+          Vista da rua
+        </a> -->
+      </div>
+      </div>
+    </info-window>
+
+
+    <!-- Naval  -->
+    <marker position="[-25.973324, 32.597220]" title="NAVAL" icon="img/DigitaisNovos/Naval.svg"
+      on-click="map.showInfoWindow(event, 'naval')" animation="Animation.DROP"></marker>
+    <info-window id="naval" max-width="200">
+      <div ng-non-bindable>
+        <img loading="lazy" src="img/Digital/2023/DALIMA-Naval 2023.jpg" style="width:100%;" />
+        <p><strong>NAVAL</strong></p>
+        <p style="position: relative;top: -8px;">Av. da Marginal, perto e em direc&ccedil;&atilde;o &agrave; ao Clube
+          Naval</p>
+        <a target="_blank"
+          style="text-decoration: none; border-radius: 3px; border: 0px; padding: 6px 10px; font-weight: bold; outline: none; background: #EF3D64; color: white;"
+          href="https://www.google.com/maps/@-25.9721599,32.5976079,3a,29.5y,160.2h,92.79t/data=!3m7!1e1!3m5!1sAF1QipNahPuQN73aPJFsR9IPGiIZ8O_R88TfQs9fGOeV!2e10!6shttps:%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipNahPuQN73aPJFsR9IPGiIZ8O_R88TfQs9fGOeV%3Dw900-h600-k-no-pi-2.7874255026298727-ya321.843039203432-ro6.4405517578125-fo90!7i3840!8i1920?coh=205410&entry=ttu">
+          Vista da rua
+        </a>
+      </div>
+    </info-window>
+
+    <!-- Mercado Janete   -->
+    <marker position="[-25.960989, 32.583075]" title="JANET" icon="img/DigitaisNovos/Janet.svg"
+      on-click="map.showInfoWindow(event, 'janete')" animation="Animation.DROP"></marker>
+    <info-window id="janete" max-width="200">
+      <div ng-non-bindable>
+        <img loading="lazy" src="img/Digital/2023/DALIMA-JANET - 2023.png" style="width:100%;" />
+        <p><strong>JANET</strong></p>
+        <p style="position: relative;top: -8px;">Av. Vladmir Lenine perto do Mercado Janet</p>
+        <!-- <a target="_blank"
+          style="text-decoration: none; border-radius: 3px; border: 0px; padding: 6px 10px; font-weight: bold; outline: none; background: #EF3D64; color: white;"
+          href="https://www.google.com/maps/@-25.973096,32.5969612,3a,22.3y,69.24h,94.92t/data=!3m8!1e1!3m6!1sAF1QipPKPFg7tb3z1DfhKvOW3Dftfzd-DC4q8_3koQU9!2e10!3e11!6shttps:%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipPKPFg7tb3z1DfhKvOW3Dftfzd-DC4q8_3koQU9%3Dw900-h600-k-no-pi-4.917297083456475-ya233.12726148875532-ro1.783233642578125-fo90!7i3840!8i1920?coh=205410&entry=ttu">
+          Vista da rua
+        </a> -->
+      </div>
+      </div>
+    </info-window>
+
+
+    <!-- Zambi  -->
+    <marker position="[-25.980250, 32.579375]" title="ZAMBI" icon="img/DigitaisNovos/Zambi.svg"
+      on-click="map.showInfoWindow(event, 'zambi')" animation="Animation.DROP"></marker>
+    <info-window id="zambi" max-width="200">
+      <div ng-non-bindable>
+        <img loading="lazy" src="img/Digital/2023/DALIMA-Zambi 2023.jpg" style="width:100%;" />
+        <p><strong>ZAMBI</strong></p>
+        <p style="position: relative;top: -8px;">AV. 10 de Novembro, no restaurante Zambi</p>
+        <a target="_blank"
+          style="text-decoration: none; border-radius: 3px; border: 0px; padding: 6px 10px; font-weight: bold; outline: none; background: #EF3D64; color: white;"
+          href="https://www.google.com/maps/@-25.980177,32.5790814,3a,75y,325.66h,100.71t/data=!3m8!1e1!3m6!1sAF1QipOikjZWkSUflwRLmWhzcR-qnDynDLkNFaLC7eUz!2e10!3e11!6shttps:%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipOikjZWkSUflwRLmWhzcR-qnDynDLkNFaLC7eUz%3Dw900-h600-k-no-pi-10.714691953202845-ya41.27646907601803-ro5.5845947265625-fo90!7i3840!8i1920?coh=205410&entry=ttu">
+          Vista da rua
+        </a>
+      </div>
+    </info-window>
+
+
+    <!-- OUA -->
+    <marker position="[-25.952489, 32.550348]" title="OUA" icon="img/DigitaisNovos/Oua.svg"
+      on-click="map.showInfoWindow(event, 'OUA')" animation="Animation.DROP"></marker>
+    <info-window id="OUA" max-width="200">
+      <div ng-non-bindable>
+        <img loading="lazy" src="img/Digital/2023/DALIMA-OUA 2023.jpg" style="width:100%;" />
+        <p><strong>OUA</strong></p>
+        <p style="position: relative;top: -8px;">Av. OUA na rotundana das bombas de gasolina da Petromoc</p>
+      </div>
+    </info-window>
+
+
+    <!-- 24 DE JULHO -->
+    <marker position="[-25.962813, 32.568636]" title="24 DE JULHO" icon="img/DigitaisNovos/24_de_julho.svg"
+      on-click="map.showInfoWindow(event, '24')" animation="Animation.DROP"></marker>
+    <info-window id="24" max-width="200">
+      <div ng-non-bindable>
+        <img loading="lazy" src="img/Digital/2023/DALIMA-24 Julho 2023.jpg" style="width:100%;" />
+        <p><strong>24 DE JULHO</strong></p>
+        <p style="position: relative;top: -8px;">Cruzamento da Av. Albert Luthuli e Av. 24 de Julho</p>
+        <a target="_blank"
+          style="text-decoration: none; border-radius: 3px; border: 0px; padding: 6px 10px; font-weight: bold; outline: none; background: #EF3D64; color: white;"
+          href="https://www.google.com/maps/@-25.9628916,32.5686526,3a,75y,332.15h,104.32t/data=!3m7!1e1!3m5!1sAF1QipNH_Ku_wVlsVc9RVXJ136ur6v9k8RBwmKPUtaFh!2e10!6shttps:%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipNH_Ku_wVlsVc9RVXJ136ur6v9k8RBwmKPUtaFh%3Dw900-h600-k-no-pi-14.318434806318066-ya34.8441799779535-ro2.815155029296875-fo90!7i3840!8i1920?coh=205410&entry=ttu">
+          Vista da rua
+        </a>
+      </div>
+    </info-window>
+
+    <!-- CASINO -->
+    <marker position="[-25.951424, 32.613238]" title="CASINO A" icon="img/DigitaisNovos/Casino.svg"
+      on-click="map.showInfoWindow(event, 'CASINO')" animation="Animation.DROP"></marker>
+    <info-window id="CASINO" max-width="200">
+      <div ng-non-bindable>
+        <img loading="lazy" src="img/Digital/2023/DALIMA-Casino A 2023.jpg" style="width:100%;" />
+        <p><strong>CASINO A</strong></p>
+
+        <p style="position: relative;top: -8px;">Av. da Marginal</p>
+
+        <a target="_blank"
+          style="text-decoration: none; border-radius: 3px; border: 0px; padding: 6px 10px; font-weight: bold; outline: none; background: #EF3D64; color: white; margin-bottom: 20px;"
+          href="https://www.google.com/maps/@-25.9517165,32.6133036,3a,48.5y,356.82h,98.97t/data=!3m8!1e1!3m6!1sAF1QipPc4Gewbvfmx6m4K6cFZx6spYDQI1B50dl0347X!2e10!3e11!6shttps:%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipPc4Gewbvfmx6m4K6cFZx6spYDQI1B50dl0347X%3Dw900-h600-k-no-pi-8.974090109167463-ya131.5769706377685-ro0.8048095703125-fo90!7i6720!8i3360?coh=205410&entry=ttu">
+          Vista da rua
+        </a>
+
+        <img loading="lazy" src="img/Digital/2023/DALIMA-Casino B 2023.jpg" style="width:100%;" />
+        <p><strong>CASINO B</strong></p>
+
+        <p style="position: relative;top: -8px;">Av. da Marginal</p>
+
+        <a target="_blank"
+          style="text-decoration: none; border-radius: 3px; border: 0px; padding: 6px 10px; font-weight: bold; outline: none; background: #EF3D64; color: white; margin-bottom: 20px;"
+          href="https://www.google.com/maps/@-25.9512562,32.6137944,3a,49.8y,259.33h,95.22t/data=!3m8!1e1!3m6!1sAF1QipOAipPwfEg15xNhqoEp_Fn22_ZT7REvdi-jKbb0!2e10!3e11!6shttps:%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipOAipPwfEg15xNhqoEp_Fn22_ZT7REvdi-jKbb0%3Dw900-h600-k-no-pi-5.2157490539847515-ya34.002702188582305-ro0.06450951099395752-fo90!7i6720!8i3360?coh=205410&entry=ttu">
+          Vista da rua
+        </a>
+      </div>
+    </info-window>
+
+    <!-- IMPRENSA -->
+    <marker position="[-25.974054, 32.573450]" title="IMPRENSA" icon="img/DigitaisNovos/Imprensa.svg"
+      on-click="map.showInfoWindow(event, 'IMPRENSA')" animation="Animation.DROP"></marker>
+    <info-window id="IMPRENSA" max-width="200">
+      <div ng-non-bindable>
+        <img loading="lazy" src="img/Digital/2023/DALIMA-Imprensa 2023.jpg" style="width:100%;" />
+        <p><strong>IMPRENSA</strong></p>
+        <p style="position: relative;top: -8px;">Cruzamento da Av. 25 de Setembro e Av. Vladimir Lenine</p>
+        <a target="_blank"
+          style="text-decoration: none; border-radius: 3px; border: 0px; padding: 6px 10px; font-weight: bold; outline: none; background: #EF3D64; color: white;"
+          href="https://www.google.com/maps/@-25.9740454,32.573562,3a,72.4y,194.81h,94.14t/data=!3m8!1e1!3m6!1sAF1QipM3Mj6bh2mGjmDQD9ArpH7CAXWrEWRFTPdD45Fj!2e10!3e11!6shttps:%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipM3Mj6bh2mGjmDQD9ArpH7CAXWrEWRFTPdD45Fj%3Dw900-h600-k-no-pi-4.13507980657333-ya346.2857400359028-ro0.3682861328125-fo90!7i3840!8i1920?coh=205410&entry=ttu">
+          Vista da rua
+        </a>
+      </div>
+    </info-window>
+
+
+    <!-- POLANA A/B -->
+    <marker position="[-25.967698, 32.597770]" title="POLANA A/B" icon="img/DigitaisNovos/Polana.svg"
+      on-click="map.showInfoWindow(event, 'POLANA')" animation="Animation.DROP"></marker>
+    <info-window id="POLANA" max-width="200">
+      <div ng-non-bindable>
+        <img loading="lazy" src="img/Digital/2023/DALIMA-Polana A 2023.jpg" style="width:100%;" />
+        <p><strong>POLANA A </strong></p>
+
+        <p style="position: relative;top: -8px;">Av. Julius Nyerere, Sede da Tv Miramar em direc&ccedil;&atilde;o
+          &agrave; Av. da Marginal</p>
+
+        <a target="_blank"
+          style="text-decoration: none; border-radius: 3px; border: 0px; padding: 6px 10px; font-weight: bold; outline: none; background: #EF3D64; color: white;"
+          href="https://www.google.com/maps/@-25.9676364,32.5976681,3a,75y,65.22h,105.22t/data=!3m8!1e1!3m6!1sAF1QipM8r-I-4c9Za1bovsl9F2iH1vnFWSzTWwKO8bBY!2e10!3e11!6shttps:%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipM8r-I-4c9Za1bovsl9F2iH1vnFWSzTWwKO8bBY%3Dw900-h600-k-no-pi-15.223803558367365-ya32.088313688227785-ro1.641666531562805-fo90!7i3840!8i1920?coh=205410&entry=ttu">
+          Vista da rua
+        </a>
+
+        <img loading="lazy" src="img/Digital/2023/DALIMA-Polana B 2023.jpg" style="width:100%;" />
+        <p><strong>POLANA B </strong></p>
+
+        <p style="position: relative;top: -8px;">Av. Julius Nyerere, Sede da Tv Miramar em direc&ccedil;&atilde;o
+          &agrave; Presid&ecirc;ncia</p>
+
+        <a target="_blank"
+          style="text-decoration: none; border-radius: 3px; border: 0px; padding: 6px 10px; font-weight: bold; outline: none; background: #EF3D64; color: white;"
+          href="https://www.google.com/maps/@-25.9674076,32.5978324,3a,75y,194.17h,98.69t/data=!3m8!1e1!3m6!1sAF1QipMOhYnXidj4P4_H99OKZqlR5j9gD3n3mknLOUsi!2e10!3e11!6shttps:%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipMOhYnXidj4P4_H99OKZqlR5j9gD3n3mknLOUsi%3Dw900-h600-k-no-pi-8.693193705256633-ya160.9851069786009-ro0.8825319409370422-fo90!7i3840!8i1920?coh=205410&entry=ttu">
+          Vista da rua
+        </a>
+      </div>
+    </info-window>
+
+
+    <!-- KAUNDA -->
+    <marker position="[-25.954278, 32.591424]" title="KAUNDA" icon="img/DigitaisNovos/Kaunda.svg"
+      on-click="map.showInfoWindow(event, 'KAUNDA')" animation="Animation.DROP"></marker>
+    <info-window id="KAUNDA" max-width="200">
+      <div ng-non-bindable>
+        <img loading="lazy" src="img/Digital/2023/DALIMA-Kaunda 2023.jpg" style="width:100%;" />
+        <p><strong>KAUNDA</strong></p>
+        <p style="position: relative;top: -8px;">Av. Kenneth Kaunda perto da Rua da Fran&ccedil;a</p>
+        <a target="_blank"
+          style="text-decoration: none; border-radius: 3px; border: 0px; padding: 6px 10px; font-weight: bold; outline: none; background: #EF3D64; color: white;"
+          href="https://www.google.com/maps/@-25.9542975,32.5915793,3a,74.1y,148.74h,88.76t/data=!3m8!1e1!3m6!1sAF1QipNNR2aS4FDLzIoYEd3RbZZWPvP7D9xSL69oaCo9!2e10!3e11!6shttps:%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipNNR2aS4FDLzIoYEd3RbZZWPvP7D9xSL69oaCo9%3Dw900-h600-k-no-pi1.2446276057040393-ya36.59830971644136-ro4.234100341796875-fo90!7i3840!8i1920?coh=205410&entry=ttu">
+          Vista da rua
+        </a>
+      </div>
+    </info-window>
+
+
+    <!-- BREVEMENTE -->
+    <!-- <marker position="[-25.961126, 32.582869]" title="BREVEMENTE" icon="img/Digital/brevemente.svg"
+      on-click="map.showInfoWindow(event, '')" animation="Animation.DROP"></marker>
+    <info-window id="BREVEMENTE" max-width="200">
+      <div ng-non-bindable>
+        <img loading="lazy" src="img/Digital/2023/DALIMA_PolanaSquare _2023.jpg" style="width:100%;" />
+        <p><strong>POLANA SQUARE</strong></p>
+        <p style="position: relative;top: -8px;">Cruzamento da Av. Julius Nyerere e Av. 24 de Julho</p>
+      </div>
+    </info-window> -->
+
+    <!-- PONTO-FINAL -->
+    <marker position="[-25.961713, 32.572194]" title="PONTO-FINAL" icon="img/DigitaisNovos/Ponto_Final.svg"
+      on-click="map.showInfoWindow(event, 'PONTO-FINAL')" animation="Animation.DROP"></marker>
+    <info-window id="PONTO-FINAL" max-width="200">
+
+      <div ng-non-bindable>
+        <img loading="lazy" src="img/Digital/2023/DALIMA-Ponto Final 2023.jpg" style="width:100%;" />
+        <p><strong>PONTO-FINAL</strong></p>
+        <p style="position: relative;top: -8px;">Cruzamento da Av. Eduardo Mondlane e Av. Guerra Popular</p>
+        <a target="_blank"
+          style="text-decoration: none; border-radius: 3px; border: 0px; padding: 6px 10px; font-weight: bold; outline: none; background: #EF3D64; color: white;"
+          href="https://www.google.com/maps/@-25.9620114,32.572309,3a,66.9y,340.87h,94.17t/data=!3m7!1e1!3m5!1sAF1QipNZARjprcflRX9XCSl23_lzU5XCnM_Gch3wyYUe!2e10!3e12!7i3840!8i1920?entry=ttu">
+          Vista da rua
+        </a>
+        <!-- <button
+          style="border-radius: 3px; border: 0px; padding: 6px 10px; font-weight: bold; outline: none; background: #EF3D64; color: white;"
+          ng-click="loadStreetView([-25.9620114,32.572309], '37.5y','336.16h','93.65t')">Vista da rua</button> -->
+      </div>
+    </info-window>
+
+    <!-- RONIL -->
+    <marker position="[-25.963833, 32.575214]" title="RONIL" icon="img/DigitaisNovos/Ronil.svg"
+      on-click="map.showInfoWindow(event, 'RONIL')" animation="Animation.DROP"></marker>
+    <info-window id="RONIL" max-width="200">
+      <div ng-non-bindable>
+        <img loading="lazy" src="img/Digital/2023/DALIMA-Ronil 2023.jpg" style="width:100%;" />
+        <p><strong>RONIL</strong></p>
+        <p style="position: relative;top: -8px;">Cruzamento da Av. Eduardo Mondlane e Av. Karl Marx</p>
+        <a target="_blank"
+          style="text-decoration: none; border-radius: 3px; border: 0px; padding: 6px 10px; font-weight: bold; outline: none; background: #EF3D64; color: white;"
+          href="https://www.google.com/maps/@-25.9639161,32.5756936,3a,48.9y,282.25h,96.34t/data=!3m8!1e1!3m6!1sAF1QipO9S9BbE017cAdPxm-77Yq9o1qLkd3Vbu0U3ThU!2e10!3e11!6shttps:%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipO9S9BbE017cAdPxm-77Yq9o1qLkd3Vbu0U3ThU%3Dw900-h600-k-no-pi-6.338370024559325-ya166.87442023771965-ro0.3130925595760345-fo90!7i3840!8i1920?coh=205410&entry=ttu">
+          Vista da rua
+        </a>
+      </div>
+    </info-window>
+
+
+    <!-- SCALA -->
+    <marker position="[-25.972772, 32.571358]" title="SCALA" icon="img/DigitaisNovos/Scala.svg"
+      on-click="map.showInfoWindow(event, 'SCALA')" animation="Animation.DROP"></marker>
+    <info-window id="SCALA" max-width="200">
+      <div ng-non-bindable>
+        <img loading="lazy" src="img/Digital/2023/DALIMA-Scala 2023.jpg" style="width:100%;" />
+        <p><strong>SCALA</strong></p>
+        <p style="position: relative;top: -8px;">Cruzamento da Av. 25 de Setembro e Av. Samora Machel</p>
+        <a target="_blank"
+          style="text-decoration: none; border-radius: 3px; border: 0px; padding: 6px 10px; font-weight: bold; outline: none; background: #EF3D64; color: white;"
+          href="https://google.com/maps/@-25.972659,32.5710013,3a,65.5y,101.84h,107.25t/data=!3m7!1e1!3m5!1sAF1QipP8f5QN7K40gpbrB0psiyLEu9-sWXZUSnsAbx8n!2e10!6shttps:%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipP8f5QN7K40gpbrB0psiyLEu9-sWXZUSnsAbx8n%3Dw900-h600-k-no-pi-17.25286071427682-ya346.9767177412574-ro1.056243896484375-fo90!7i3840!8i1920?coh=205410&entry=ttu">
+          Vista da rua
+        </a>
+      </div>
+    </info-window>
+
+
+    <transit-layer></transit-layer>
+  </ng-map>
+
+
+  <script>
+
+    angular.module('ngMap').run(function ($rootScope, NgMap) {
+      NgMap.getMap().then(function (map) {
+        $rootScope.map = map;
+
+        // const userLang = navigator.language;
+        // const locationImg = document.getElementById('legenda');
+
+        // if (userLang.includes('en')) {
+        //   locationImg.src = 'img/legenda_en.png';
+        // } else {
+        //   locationImg.src = 'img/legenda.png';
+        // }
+
+        const iframe = document.querySelector('iframe');
+        iframe.replaceWith("<div></div>")
+      });
+    });
+
+    var styleArray = [
+      {
+        featureType: "all",
+        stylers: [
+          { saturation: -80 }
+        ]
+      }, {
+        featureType: "road.arterial",
+        elementType: "geometry",
+        stylers: [
+          { hue: "#00ffee" },
+          { saturation: 50 }
+        ]
+      }, {
+        featureType: "poi.business",
+        elementType: "labels",
+        stylers: [
+          { visibility: "off" }
+        ]
+      }
+    ];
+  </script>
+</body>
+
+</html>
