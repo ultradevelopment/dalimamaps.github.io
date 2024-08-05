@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html ng-app="ngMap">
+
+<head>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+  <meta charset="UTF-8">
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfdatz_SkDMTQQEXK7abzwjtEVaMMopCE"
+    type="text/javascript"></script>
+  <script src="js/angular.js"></script>
+  <script src="js/ng-map.js"></script>
+  <style type="text/css">
+    @font-face {
+      font-family: 'ProximaNovaA-Bold';
+      src: url('fonts/ProximaNovaA-Bold.woff');
+    }
+
+    @font-face {
+      font-family: 'ProximaNovaA-Regular';
+      src: url('fonts/ProximaNovaA-Regular.woff');
+    }
+
+    @font-face {
+      font-family: 'ProximaNova-Black';
+      src: url('fonts/ProximaNovaA-Black.woff');
+    }
+
+    .fullwidth {
+      width: 100% !important;
+      margin: 0 !important;
+      overflow: hidden;
+    }
+
+    .gm-style {
+      font: 400 11px 'ProximaNovaA-Bold', sans-serif;
+    }
+
+    * {
+      font-family: 'ProximaNovaA-Regular', sans-serif !important;
+    }
+
+    .tamanhos {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      margin-bottom: 1rem;
+    }
+
+    .pixel {
+      display: flex;
+      flex-direction: column;
+      align-items: baseline;
+      font-size: 11px;
+    }
+
+    .gm-style-iw {
+      color: #000;
+      text-align: center;
+      top: 25px !important;
+      width: 200px;
+    }
+
+    @media screen and (max-width: 640px) {
+
+      .img-hide {
+        display: none !important;
+      }
+    }
+
+    .estatico {
+      background: rgb(245, 166, 180, 0.5);
+      color: rgb(237, 88, 115);
+      font-weight: bold;
+      border: 1.5px solid rgb(245, 114, 138);
+      padding: 2px 10px;
+      border-radius: 5px;
+    }
+
+    .digital {
+      background: rgba(189, 216, 241, 0.5);
+      color: #3486d3;
+      font-weight: bold;
+      border: 1.5px solid #3486d3;
+      padding: 2px 10px;
+      border-radius: 5px;
+    }
+
+    div p {
+      margin-bottom: 8px;
+    }
+  </style>
+
+</head>
+
+<body class="fullwidth">
+
+  <ng-map min-zoom="12" max-zoom="18" styles="[
+
+{featureType:'administrative',
+elementType:'all',
+stylers:[
+{saturation:-100}]}, 
+
+{featureType:'administrative.province',
+elementType:'all',
+stylers:[{visibility:'off'}]},
+
+{featureType:'landscape',
+elementType:'all',
+stylers:[
+{saturation:-100},
+{lightness:65},
+{visibility:'on'}]},
+					
+{featureType:'poi',
+elementType:'all',
+stylers:[
+{saturation:-100},
+{lightness:50},
+{visibility:'simplified'}]},
+
+{featureType:'road',
+elementType:'all',
+stylers:[
+{saturation:-100}]},
+
+{featureType:'road.highway',
+elementType:'all',
+stylers:[
+{visibility:'simplified'}]},	
+
+{featureType:'road.arterial',
+elementType:'all',
+stylers:[
+{lightness:'30'}]},	
+
+{featureType:'road.local',
+elementType:'all',
+stylers:[
+{lightness:'40'}]},
+
+{featureType:'transit',
+elementType:'all',
+stylers:[{saturation:-100},
+{visibilit:'simplified'}]},	
+
+{featureType:'water',
+elementType:'geometry',
+stylers:[
+{hue:'#E6E6E6'},
+{lightness:10},
+{saturation:-100}]},
+
+{featureType:'water',
+elementType:'labels',
+stylers:[
+{lightness:-25},
+{saturation:-100}]}]
+
+" zoom="15" zoom-control-options="{style:'LARGE', position:'LEFT_CENTER'}" center="[-25.968468, 32.564084]"
+    map-type-control="true"
+    map-type-control-options='{position:"top_left", style:"dropdown_menu", mapTypeIds:["HYBRID","ROADMAP","SATELLITE","TERRAIN"]}'
+    overview-map-control="true" overview-map-control-options="{opened:true}" pan-control="true"
+    pan-control-options='{position:"left_center"}' rotate-control="true"
+    rotate-control-options='{position:"right_center"}' scale-control="true"
+    scale-control-options='{position:"bottom_right", style:"default"}' street-view-control="true"
+    street-view-control-options='{position:"top_right"}' scrollwheel="false" style="height: 780px; display:block;">
+
+    <!--<custom-control position="RIGHT_CENTER" index="1">-->
+    <!--  <div>-->
+    <!--  <img src="img/redes.svg" style="width:160px;padding-right:10px;">-->
+    <!--  </div>-->
+    <!--</custom-control>-->
+
+    <!-- Dalima Sede -->
+
+
+    <!-- <custom-control position="RIGHT_BOTTOM" index="1">
+      <div class="img-hide">
+        <img id="legenda" src="img/Locais_Descricao.png" />
+      </div>
+    </custom-control> -->
+
+
+
+    <!-- <custom-marker title="DALIMA" position="[-25.968468, 32.564084]" on-click="map.showInfoWindow(event, 'Dalima')">
+      <div>
+        <img src="img/LocaisDigitais/Dalima_Office.svg" style="width:200px" />
+      </div>
+    </custom-marker> -->
+
+    <marker position="[-25.968468, 32.564084]" icon="img/LocaisDigitais/Dalima_Office.svg"
+      on-click="map.showInfoWindow(event, 'Dalima')" animation="Animation.DROP"></marker>
+
+    <info-window id="Dalima" max-width="200">
+      <div ng-non-bindable>
+        <img src="img/DALIMA-_-Web-Entrada.jpg" style="width:200px" />
+        <p><strong>DALIMA | Publicidade Digital Outdoor</strong></p>
+        <p>Av. 25 de Setembro, 2400 RC drt Maputo, Mo&ccedil;ambique</p>
+      </div>
+    </info-window>
+
+
+
+
+    <transit-layer></transit-layer>
+  </ng-map>
+
+
+  <script>
+
+    angular.module('ngMap').run(function ($rootScope, NgMap) {
+      NgMap.getMap().then(function (map) {
+        $rootScope.map = map;
+
+        // const userLang = navigator.language;
+        // const locationImg = document.getElementById('legenda');
+
+        // if (userLang.includes('en')) {
+        //   locationImg.src = 'img/legenda_en.png';
+        // } else {
+        //   locationImg.src = 'img/legenda.png';
+        // }
+
+        const iframe = document.querySelector('iframe');
+        iframe.replaceWith("<div></div>")
+      });
+    });
+
+    var styleArray = [
+      {
+        featureType: "all",
+        stylers: [
+          { saturation: -80 }
+        ]
+      }, {
+        featureType: "road.arterial",
+        elementType: "geometry",
+        stylers: [
+          { hue: "#00ffee" },
+          { saturation: 50 }
+        ]
+      }, {
+        featureType: "poi.business",
+        elementType: "labels",
+        stylers: [
+          { visibility: "off" }
+        ]
+      }
+    ];
+  </script>
+</body>
+
+</html>
