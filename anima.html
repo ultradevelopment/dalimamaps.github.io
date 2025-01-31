@@ -188,16 +188,21 @@ stylers:[
       </div>
     </custom-marker>
 
-    <marker position="[-25.968468, 32.564084]" icon="img/dalima_office_tranparent.png"
-      on-mouseover="map.showInfoWindow(event, 'Dalima')" animation="Animation.DROP"></marker>
+    <marker position="[-25.968468, 32.564084]" 
+        icon="img/dalima_office_tranparent.png"
+        on-mouseover="map.showInfoWindow(event, 'Dalima')"
+        on-mouseleave="map.hideInfoWindow(event, 'Dalima')" 
+        animation="Animation.DROP">
+</marker>
 
-    <info-window id="Dalima" max-width="200">
-      <div ng-non-bindable>
-        <img src="img/DALIMA-_-Web-Entrada.jpg" style="width:200px" />
-        <p><strong>DALIMA | Publicidade Digital Outdoor</strong></p>
-        <p>Av. 25 de Setembro, 2400 RC drt Maputo, Mo&ccedil;ambique</p>
-      </div>
-    </info-window>
+<info-window id="Dalima" max-width="200">
+  <div ng-non-bindable>
+    <img src="img/DALIMA-_-Web-Entrada.jpg" style="width:200px" />
+    <p><strong>DALIMA | Publicidade Digital Outdoor</strong></p>
+    <p>Av. 25 de Setembro, 2400 RC drt Maputo, Mo&ccedil;ambique</p>
+  </div>
+</info-window>
+
 
     <!-- Jat Times Square  -->
     <marker position="[-25.977861, 32.581939]" title="Times Square" icon="img/DigitaisNovos/Times_Square.svg"
