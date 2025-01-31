@@ -191,7 +191,7 @@ stylers:[
     <marker position="[-25.968468, 32.564084]" 
         icon="img/dalima_office_tranparent.png"
         on-mouseover="map.showInfoWindow(event, 'Dalima')"
-        on-mouseleave="map.hideInfoWindow(event, 'Dalima')" 
+        on-mouseout="map.hideInfoWindow(event, 'Dalima')" 
         animation="Animation.DROP">
 </marker>
 
@@ -241,7 +241,7 @@ stylers:[
 landmark
     <!-- Mercado Janete   -->
     <marker position="[-25.974535,32.588779]" title="JANET" icon="img/DigitaisNovos/novo_cristal.svg"
-      on-mouseover="map.showInfoWindow(event, 'janete')" animation="Animation.DROP" onclick="alert()"></marker>
+      on-mouseover="map.showInfoWindow(event, 'janete')" animation="Animation.DROP"></marker>
     <info-window id="janete" max-width="200">
       <div ng-non-bindable>
         <img loading="lazy" src="img/Digital/2023/DALIMA-Cristal 2023.jpg" style="width:100%;" />
