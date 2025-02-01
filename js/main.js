@@ -1,0 +1,1 @@
+const marker = document.getElementById('marker').style.display='none';

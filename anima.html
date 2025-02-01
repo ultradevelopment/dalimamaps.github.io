@@ -8,6 +8,7 @@
     type="text/javascript"></script>
   <script src="js/angular.js"></script>
   <script src="js/ng-map.js"></script>
+  <script src="js/main.js"></script>
   <style type="text/css">
     @font-face {
       font-family: 'ProximaNovaA-Bold';
@@ -190,8 +191,7 @@ stylers:[
 
     <marker position="[-25.968468, 32.564084]" 
         icon="img/dalima_office_tranparent.png"
-        on-mouseover="map.showInfoWindow(event, 'Dalima')"
-        on-mouseout="map.hideInfoWindow(event, 'Dalima')" 
+        id="marker"
         animation="Animation.DROP">
 </marker>
 
@@ -241,7 +241,7 @@ stylers:[
 landmark
     <!-- Mercado Janete   -->
     <marker position="[-25.974535,32.588779]" title="JANET" icon="img/DigitaisNovos/novo_cristal.svg"
-      on-mouseover="map.showInfoWindow(event, 'janete')" animation="Animation.DROP"></marker>
+       animation="Animation.DROP"></marker>
     <info-window id="janete" max-width="200">
       <div ng-non-bindable>
         <img loading="lazy" src="img/Digital/2023/DALIMA-Cristal 2023.jpg" style="width:100%;" />
