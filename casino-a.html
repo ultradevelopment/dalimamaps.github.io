@@ -195,7 +195,10 @@ stylers:[
 
     <!-- Jat Times Square  -->
     <marker position="[-25.951424, 32.613238]" title="CASINO A" icon="img/DigitaisNovos/Casino.svg"
-      on-mouseover="map.showInfoWindow(event, 'times-square')" animation="Animation.DROP"></marker>
+  on-click="map.showInfoWindow(event, 'times-square')" 
+  animation="Animation.DROP">
+</marker>
+
     <info-window id="times-square" max-width="200">
       <div ng-non-bindable>
         <img loading="lazy" src="img/Digital/2023/DALIMA-Casino A 2023.jpg"  style="width:100%;" />
