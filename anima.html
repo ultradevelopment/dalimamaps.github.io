@@ -183,26 +183,21 @@ stylers:[
 
 
 
-    <custom-marker title="DALIMA" position="[-25.968437, 32.564035]" on-click="map.showInfoWindow(event, 'Dalima')">
-      <div>
-        <img src="img/DigitaisNovos/Office.svg" style="width:200px" />
+   
+
+
+
+	    <!-- Dalima  -->
+    <marker position="[-25.977861, 32.581939]" title="Times Square" icon="img/DigitaisNovos/Office.svg"
+      on-click="map.showInfoWindow(event, 'times-square')" animation="Animation.DROP"></marker>
+    <info-window id="times-square" max-width="200">
+      <div ng-non-bindable>
+        <img src="https://raw.githubusercontent.com/ultradevelopment/dalimamaps.github.io/refs/heads/main/dalima-location.jpg" style="width:200px" />
+        <p><strong>DALIMA | Publicidade Digital Outdoor</strong></p>
+        <p style="position: relative;top: -8px;">Polana Shopping & Office Center, No. 11, Av. 24 de Julho, Maputo</p>
       </div>
-    </custom-marker>
-
-    <marker position="[-25.968468, 32.564084]" 
-        icon="img/dalima_office_tranparent.png"
-        id="marker"
-	on-click="map.showInfoWindow(event, 'Dalima')"
-        animation="Animation.DROP">
-</marker>
-
-<info-window id="Dalima" max-width="200">
-  <div ng-non-bindable>
-    <img src="https://raw.githubusercontent.com/ultradevelopment/dalimamaps.github.io/refs/heads/main/dalima-location.jpg" style="width:200px" />
-    <p><strong>DALIMA | Publicidade Digital Outdoor</strong></p>
-    <p>Polana Shopping & Office Center, No. 11, Av. 24 de Julho, Maputo</p>
-  </div>
-</info-window>
+      </div>
+    </info-window>
 
 
     <!-- Jat Times Square  -->
